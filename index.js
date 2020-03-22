@@ -13,10 +13,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.use(bodyParser.json());
 
-app.get('/', (req, res) => {
-    res.send('Hello World!')
-});
+app.use(express.static(path.join(__dirname, 'build')));
 
-app.use('/api', userRouter);
+
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
 app.listen(apiPort, () => console.log(`Server running on port ${apiPort}`));
