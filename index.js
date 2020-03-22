@@ -1,3 +1,7 @@
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -7,7 +11,6 @@ const db = require('./data/db');
 const userRouter = require('./routes/router');
 
 const app = express();
-const apiPort = 3000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
@@ -23,4 +26,4 @@ app.get('/*', function (req, res) {
 
 app.use('/api', userRouter);
 
-app.listen(process.env.PORT || apiPort, () => console.log(`Server running on port ${apiPort}`));
+app.listen(process.env.PORT || 3000);
