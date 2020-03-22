@@ -21,4 +21,6 @@ app.get('/*', function (req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-app.listen(apiPort, () => console.log(`Server running on port ${apiPort}`));
+app.use('/api', userRouter);
+
+app.listen(process.env.PORT || apiPort, () => console.log(`Server running on port ${apiPort}`));
