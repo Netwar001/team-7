@@ -1,4 +1,5 @@
 {
+  "start": "node server/index.js"
   "name": "server",
   "version": "1.0.0",
   "description": "",
