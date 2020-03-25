@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-	"build": "cd client && npm run build",
-    "start": "cd ../server && node index.js"
+	"build": "cd client && react-scripts build",
+    "start": "cp build ../server && cd ../server && node index.js"
   },
   "keywords": [],
   "author": "",
