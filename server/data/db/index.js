@@ -3,6 +3,7 @@ const url = "mongodb://mongo-data:MDcfs7xKwbP2FEnB67cJTENOgoy61wrEG6tAQBWKOti6WW
 
 const db = mongoose.connect(url, {
     useNewUrlParser: true,
+	useMongoClient: true,
 })
     .then (() => console.log('MongoDB connected'))
     .catch((err) => console.log(err));
