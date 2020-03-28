@@ -19,4 +19,4 @@ app.get('/*', function (req, res) {
 
 app.use('/api', userRouter);
 
-module.exports = app;
+app.listen(process.env.PORT || 3000);
