@@ -1,6 +1,5 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const cors = require('cors');
 const crypto = require('crypto');
 const db = require('./data/db');
 const userRouter = require('./routes/router');
@@ -8,7 +7,6 @@ const userRouter = require('./routes/router');
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors());
 app.use(bodyParser.json());
 
 const path = require('path');
