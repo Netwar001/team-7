@@ -1,11 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const crypto = require('crypto');
-const mongoose = require('mongoose');
 const userRouter = require('./routes/router');
 const cors = require('cors');
-
 const app = express();
+
+require('./data/db/index').connect();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
