@@ -5,7 +5,7 @@ const userRouter = require('./routes/router');
 const cors = require('cors');
 const app = express();
 
-require('./data/db/index').connect();
+const db = require('./data/db/index');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());

@@ -1,15 +1,6 @@
-const mongoose = require('mongoose');
-mongoose.Promise = global.Promise;
+var mongoClient = require("mongodb").MongoClient;
+const db = mongoClient.connect("mongodb://mongo-data:MDcfs7xKwbP2FEnB67cJTENOgoy61wrEG6tAQBWKOti6WWY3hjMObYPyo3ATfLUVX9LJz9zui38tTIYKkpk1wg%3D%3D@mongo-data.mongo.cosmos.azure.com:10255/?ssl=true&appName=@mongo-data@", function (err, client) {
+	client.close();
+});
 
-const env = require('./env/environment');
-const mongoUri = `mongodb://${env.accountName}:${env.key}@${env.accountName}.documents.azure.com:${env.port}/${env.databaseName}?ssl=true`;
-
-function connect() {
-	mongoose.set('debug', true);
-	return mongoose.connect(mongoUri, { useMongoClient: true });
-}
-
-module.exports = {
-	connect,
-	mongoose
-};
+module.exports = db;
