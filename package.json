@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-	"build": "cd client && react-scripts build",
-    "start": "cp build ../server && cd ../server && node index.js"
+    "build": "webpack-dev-server --debug --hot --devtool eval-source-map --output-pathinfo",
+    "start": "node server/index.js"
   },
   "keywords": [],
   "author": "",
@@ -17,7 +17,7 @@
     "express": "^4.17.1",
     "mongoose": "^5.9.4",
     "nodemon": "^2.0.2",
-	"react": "^16.13.0",
+    "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "connect-mongo": "^3.2.0",
-    "express-session": "^1.17.0"
+    "express-session": "^1.17.0",
+    "webpack": "^4.42.1"
   }
 }
