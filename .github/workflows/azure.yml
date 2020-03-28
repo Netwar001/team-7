@@ -11,6 +11,10 @@
 on:
   release:
     types: [created]
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 env:
   AZURE_WEBAPP_NAME: best-messenger    # set this to your application's name
