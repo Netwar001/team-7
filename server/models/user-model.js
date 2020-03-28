@@ -1,5 +1,5 @@
-const mongoClient = require("mongodb").MongoClient;
-const UserSchema = new mongoClient.Schema({
+const mongoose = require('mongoose');
+const UserSchema = new mongoose.Schema({
     email: {
         type: String,
         unique: true,
@@ -15,4 +15,4 @@ const UserSchema = new mongoClient.Schema({
     }
 });
 
-module.exports = mongoClient.model('User', UserSchema);
+module.exports = mongoose.model('User', UserSchema);
