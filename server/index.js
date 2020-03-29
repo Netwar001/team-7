@@ -5,7 +5,7 @@ const userRouter = require('./routes/router');
 const cors = require('cors');
 const app = express();
 const mongoose = require('mongoose');
-require('./data/db/index').connect();
+mongoose.connect(process.env.MONGODB_URI);
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
