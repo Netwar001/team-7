@@ -1,11 +1,9 @@
 const mongoose = require('mongoose');
-mongoose.Promise = global.Promise;
 
-function connect() {
-	return mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true });
-}
+const db = mongoose.connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+})
+    .then (() => console.log('MongoDB connected'))
+    .catch((err) => console.log(err));
 
-module.exports = {
-	connect,
-	mongoose
-};
+module.exports = db;
