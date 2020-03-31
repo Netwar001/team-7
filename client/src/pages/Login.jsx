@@ -43,7 +43,7 @@ class Login extends Component {
             this.props.history.push("/mes");
             })
             .catch(error => {
-                window.alert(`Email или пароль не верны` + email + password)
+                window.alert(`Email или пароль не верны`)
             })
     };
 
