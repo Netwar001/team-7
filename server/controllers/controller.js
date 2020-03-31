@@ -101,7 +101,7 @@ login = async (req, res) => {
                 return res
                     .status(404)
                     .json({
-                        success: false, error: `Пользователь не найден`
+                        success: false, error: `Пользователь не найден $(email), $(password)`
                     })
         }
     )
