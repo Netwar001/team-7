@@ -15,8 +15,8 @@ function sendEmail() {
         port: 465,
         secure: true, // true for 465, false for other ports
         auth: {
-            user: 'MessangerBot@yandex.ru',
-            pass: 'AutoMessangerBot'
+            user: process.env.EMAILLOGIN,
+            pass: process.env.EMAILPASS
         }
     });
 
