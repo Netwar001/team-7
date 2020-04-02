@@ -9,6 +9,6 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     store: new MongoStore({
-        url: MONGOSESSION_URI,
+        url: process.env.MONGOSESSION_URI,
     })
 }));
