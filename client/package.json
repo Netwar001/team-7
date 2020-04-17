@@ -28,7 +28,7 @@
     "semantic-ui-react": "^0.88.2",
     "styled-components": "^5.0.1"
   },
-  "proxy": "http://localhost:5000",
+  "proxy": "https://temp-messenger.azurewebsites.net",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
