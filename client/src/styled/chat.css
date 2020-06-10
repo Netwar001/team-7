@@ -129,10 +129,6 @@ ul{
     border:4px solid #4c0855;
     border-left: none;
     white-space: pre-line;
-<<<<<<< HEAD
-=======
-    display: flex;
->>>>>>> 68d10e5ded05a06a8e2f46bcb37f9a29b4a81b63
     flex-direction: column;
     justify-content: flex-end;
 }
