@@ -2,14 +2,13 @@
   "name": "best-messenger",
   "version": "0.9.5",
   "scripts": {
-	"postinstall": "pushd ./client/ && npm install"
-    "start": "npm run build"
-    "test": "#npm run test --if-present"
-    "change": "mkdir ../server/client/"
-    "move": "cp -r ./build/* ../server/client/"
-    "clean": "popd"
-    "change": "pushd ./server/"
-    "install": "npm install"
-    "clean": "popd"
+	"postinstall": "cd client && npm install",
+    "start": "npm run build",
+    "build": "npm run transpile && npm run build --prefix client && npm run client",
+    "deploy": "concurrently \"node ./server/index\" \"npm run client\"",
+    "dev": "concurrently \"npm-run-all transpile watch:dev\" \"npm run client\"",
+    "server": "npm-run-all clean transpile && node ./server/index",
+    "client": "npm start --prefix client",
+    "watch:dev": "nodemon"
   }
 }
