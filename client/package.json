@@ -27,9 +27,6 @@
     "socket.io-client": "^2.3.0",
     "styled-components": "^5.1.0"
   },
-  "resolutions": {
-    "@vue/cli-service/**/yargs-parser": "^13.1.2"
-  },
   "proxy": "http://localhost:5000",
   "scripts": {
     "start": "react-scripts start",
