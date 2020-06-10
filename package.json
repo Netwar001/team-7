@@ -2,13 +2,7 @@
   "name": "best-messenger",
   "version": "0.9.5",
   "scripts": {
-	"postinstall": "cd client && npm install",
-    "start": "npm run build",
-    "build": "npm run transpile && npm run build --prefix client && npm run client",
-    "deploy": "concurrently \"node ./server/index\" \"npm run client\"",
-    "dev": "concurrently \"npm-run-all transpile watch:dev\" \"npm run client\"",
-    "server": "npm-run-all clean transpile && node ./server/index",
-    "client": "npm start --prefix client",
-    "watch:dev": "nodemon"
+	"postinstall": "npm install --prefix frontend && npm install --prefix backend",
+    "build": "npm run build --prefix frontend"
   }
 }
