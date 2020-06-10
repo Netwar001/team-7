@@ -32,9 +32,9 @@ const cors = require('cors');
     apiRouter.use('/users', userRoutes);
     apiRouter.use('/session', sessionRoutes);
     const path = require('path');
-    app.use(express.static(path.join(__dirname, 'client')));
+    const build = path.join(__dirname, '../client/build');
     app.get('/*', function (req, res) {
-      res.sendFile(path.join(__dirname, 'client', 'index.html'));
+		res.sendFile(path.resolve(path.join(build, "/index.html")));
     });
 
     //определяем действие при подключении
