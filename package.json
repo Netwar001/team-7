@@ -8,6 +8,6 @@
   "scripts": {
     "postinstall": "npm install --prefix client && npm install --prefix server",
     "build": "npm run build --prefix client",
-	"heroku-postbuild": "mkdir ./server/client/ && cd client/ && cp -r ./build/* ../server/client/"
+	"heroku-postbuild": "mkdir ./server/client/ && cd client/ && cp -r build/* ../server/client/"
   }
 }
