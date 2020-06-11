@@ -7,6 +7,7 @@
   },
   "scripts": {
     "postinstall": "npm install --prefix client && npm install --prefix server",
-	"heroku-postbuild": "npm run build --prefix client && mkdir ./server/client/ && cp -r ./client/build/* ./server/client/"
+    "build": "npm run build --prefix client",
+    "start": "node server/index.js"
   }
 }
