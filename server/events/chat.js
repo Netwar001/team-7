@@ -11,7 +11,6 @@ async function saveMessage(mes) {
 }
 
 async function chatList(user, socket) {
-  //обрабатываем информацию
   const { fromUser } = user;
   let users = await Chat.find({ fromUser: fromUser }, 'toUser -_id');
   let toCurrentUsers = await Chat.find({ toUser: fromUser }, 'fromUser -_id');
@@ -67,7 +66,6 @@ async function chatList(user, socket) {
       lastMessage = lastMessage.replace(fromUser + ':', 'Вы:');
     list[i] += lastMessage;
   }
-  //отправляем вызываем на клиенте действие по событию 'returnChatList'
   return socket.emit('returnChatList', list);
 }
 
@@ -123,7 +121,7 @@ async function allUsers(user, socket) {
     let str = element.toString();
     str = str.replace("{ username: '", '');
     str = str.replace("' }", '');
-    if (str !== username) list.push(str);
+    if (str !== username && str.trim() !== '' && str !== '{}') list.push(str);
   }
   return socket.emit('returnAllUsers', list);
 }
