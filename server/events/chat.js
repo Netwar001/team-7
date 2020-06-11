@@ -14,7 +14,7 @@ async function chatList(user, socket) {
   const { fromUser } = user;
   let users = await Chat.find({ fromUser: fromUser }, 'toUser -_id');
   let toCurrentUsers = await Chat.find({ toUser: fromUser }, 'fromUser -_id');
-  let groupChat = await Chat.find({ room: /[\w\s\d,]*/ }, 'room -_id');
+  let groupChat = await Chat.find({ room: /[\w\s\d,]*/}, 'room -_id');
   let list = [];
   for (let element of users) {
     let str = element.toString();
@@ -55,7 +55,7 @@ async function chatList(user, socket) {
     lastMessage = lastMessage.toString().replace(/{[\w\s,:']*fromUser:\s*'/i, '\n\n');
     lastMessage = lastMessage.replace(/'[\w\s,:']*message:\s*'/i, ': ');
     let date = new Date(
-      lastMessage.split(/'[\s,]*[\s]*time:\s/i)[1].replace(/\s*}/i, ''),
+      lastMessage.split(/'[\s,]*time:\s/i)[1].replace(/\s*}/i, ''),
     ).toString();
     date = date.replace(/\w{3}\s\w{3}\s\d{2}\s\d{4}\s(\d{2}):(\d{2})[\w\s\d,:'+()]*/i, '$1:$2');
     lastMessage = lastMessage.replace(
