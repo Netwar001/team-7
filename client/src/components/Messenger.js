@@ -242,6 +242,7 @@ const Messenger = ({
     chatList(currentUser);
   }
 
+  console.log(usersList);
   function Dialogs() {
     const listMessages = usersList.map((user) => {
       return (
@@ -249,7 +250,7 @@ const Messenger = ({
           {user.split("\n\n")[0] === sendingToCustomer && (
             <button
               className="current-user-btn"
-              key={user}
+              key='0'
               value={user}
               onClick={handleClick}
             >
