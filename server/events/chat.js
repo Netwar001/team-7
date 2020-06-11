@@ -31,8 +31,40 @@ async function chatList(user, socket) {
   for (let element of groupChat) {
     let str = element.toString();
     str = str.replace(/{[\w\s]*room:\s*'/i, '');
-    str = str.replace("' }", '');
+    str = str.replace(/'\s*}/, '');
     if (!list.includes(str) && str.includes(fromUser)) list.push(str);
+  }
+  for (let i = 0; i < list.length; i++) {
+    let lastMessage;
+    if (list[i].split(', ').length === 1)
+      lastMessage = await Chat.find(
+        {
+          $or: [
+            { fromUser: fromUser, toUser: list[i] },
+            { fromUser: list[i], toUser: fromUser },
+          ],
+        },
+        'fromUser message time -_id',
+      )
+        .sort({ time: -1 })
+        .limit(1);
+    else
+      lastMessage = await Chat.find({ room: list[i] }, 'fromUser message time -_id')
+        .sort({ time: -1 })
+        .limit(1);
+    lastMessage = lastMessage.toString().replace(/{[\w\s,:']*fromUser:\s*'/i, '\n\n');
+    lastMessage = lastMessage.replace(/'[\w\s,:']*message:\s*'/i, ': ');
+    let date = new Date(
+      lastMessage.split(/'[\s,]*time:\s/i)[1].replace(/\s*}/i, ''),
+    ).toString();
+    date = date.replace(/\w{3}\s\w{3}\s\d{2}\s\d{4}\s(\d{2}):(\d{2})[\w\s\d,:'+()]*/i, '$1:$2');
+    lastMessage = lastMessage.replace(
+      /'[\s,]*[\s]*time:\s(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):\d{2}.\d{3}Z\s*}/i,
+      '\n\n' + date,
+    );
+    if (lastMessage.includes(fromUser + ':'))
+      lastMessage = lastMessage.replace(fromUser + ':', 'Вы:');
+    list[i] += lastMessage;
   }
   return socket.emit('returnChatList', list);
 }
