@@ -32,8 +32,11 @@ const cors = require('cors');
     apiRouter.use('/users', userRoutes);
     apiRouter.use('/session', sessionRoutes);
     const path = require('path');
-	var staticPath = path.join(__dirname, '../client/build');
+	let staticPath = path.join(__dirname, '../client/build');
 	app.use(express.static(staticPath));
+    app.get('/*', function (req, res) {
+      res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+    });
 
     //определяем действие при подключении
     io.on('connection', (socket) => {
