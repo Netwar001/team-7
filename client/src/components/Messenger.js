@@ -273,7 +273,19 @@ const Messenger = ({
               key='0'
               value={user}
               onClick={handleClick}
-            >{user}</button>
+            >
+              <div data-key={user} className="name-time">
+                <h1 key="1" data-key={user}>
+                  {user.split("\n\n")[0]}
+                </h1>
+                <h2 key="2" data-key={user}>
+                  {user.split("\n\n")[2]}
+                </h2>
+              </div>
+              <h3 key="3" data-key={user}>
+                {user.split("\n\n")[1]}
+              </h3>
+            </button>
           )}
         </ul>
       );
