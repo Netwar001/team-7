@@ -34,7 +34,7 @@ const cors = require('cors');
     const path = require('path');
 	app.use(express.static(path.join(__dirname, 'client')));
     app.get('/*', function (req, res) {
-      res.sendFile(path.join(__dirname, 'client', 'index.html'));
+      res.send('hello world');
     });
 
     //определяем действие при подключении
